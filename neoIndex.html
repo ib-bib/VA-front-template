@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./neoStyle.css" />
+		<link
+			rel="shortcut icon"
+			href="./IEEE Branch logo.jpg"
+			type="image/x-icon"
+		/>
+		<title>IEEE Volunteer App</title>
+	</head>
+	<body onload="retreiveDatum()">
+		<header>
+			<a href="https://github.com/IEEE-SUSTech" class="branchLogo">
+				<img src="./IEEE-Branch-logo.svg" height="80" />
+			</a>
+			<button class="accountBtn">
+				<img
+					src="./account-customize-man-svgrepo-com.svg"
+					height="50"
+				/>
+			</button>
+		</header>
+		<main class="container">
+			<section class="card" id="criteriaSection">
+				<div class="criteriaIcon"></div>
+				<div class="criteriaTitle">
+					Completion Of Certificate Criteria
+				</div>
+				<div class="suggestions">
+					<ul>
+						<li>Suggestion #1</li>
+						<li>Suggestion #2</li>
+					</ul>
+				</div>
+			</section>
+			<section class="card" id="flagsSection">
+				<div class="miniContainer">
+					<span class="cardIcon2 yellow"></span>
+					<span class="flagCount" id="yellowFlagCount">
+						Yellow Flag Count
+					</span>
+				</div>
+				<div class="miniContainer">
+					<span class="cardIcon2 red"></span>
+					<span class="flagCount" id="redFlagCount">
+						Red Flag Count
+					</span>
+				</div>
+				<div class="requiredRating">
+					Next month aim for a rating of X or higher <br />
+					to remove a Y flag. <br />
+					We believe in you! You can do it!
+				</div>
+			</section>
+			<section class="card" id="ratingSection">
+				<div id="ratingAverage" class="miniContainer">
+					<span class="ratingIcon cardIcon2"></span>
+					<!-- The gap between these two elements -->
+					<span class="ratingTXT">Average Rating</span>
+				</div>
+				<div id="ratingMonth" class="miniContainer">
+					<span class="ratingIcon cardIcon2"></span>
+					<!-- The gap between these two elements -->
+					<span class="ratingTXT">Latest Rating</span>
+				</div>
+				<div id="moreDetails">See More Details</div>
+			</section>
+		</main>
+	</body>
+	<script type="text/javascript" src="./app.js"></script>
+</html>
