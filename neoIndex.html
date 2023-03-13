@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./neoStyle.css" />
+		<link
+			rel="shortcut icon"
+			href="./IEEE Branch logo.jpg"
+			type="image/x-icon"
+		/>
+		<title>IEEE Volunteer App</title>
+	</head>
+	<body onload="retreiveDatum()">
+		<header>
+			<a href="https://github.com/IEEE-SUSTech" class="branchLogo">
+				<img src="./IEEE-Branch-logo.svg" height="80" />
+			</a>
+			<button class="accountBtn">
+				<img
+					src="./account-customize-man-svgrepo-com.svg"
+					height="50"
+				/>
+			</button>
+		</header>
+		<main class="container">
+			<!-- Criteria Card -->
+			<section class="card" id="criteriaSection">
+				<div class="completion">
+					<div class="outer">
+						<div class="inner">
+							<div id="completionValue">%</div>
+						</div>
+					</div>
+					<!-- SVG for loading graphic -->
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						version="1.1"
+						width="160px"
+						height="160px"
+						id="criteriaSVG"
+					>
+						<defs>
+							<linearGradient id="GradientColor">
+								<stop offset="0%" stop-color="grey" />
+								<stop offset="100%" stop-color="black" />
+							</linearGradient>
+						</defs>
+						<circle
+							id="completionCirlce"
+							cx="80"
+							cy="80"
+							r="70"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</div>
+				<div class="criteriaTitle">
+					Completion Of Certificate Criteria
+				</div>
+				<div class="suggestions">
+					<ul>
+						<li>Suggestion #1</li>
+						<li>Suggestion #2</li>
+					</ul>
+				</div>
+			</section>
+			<!-- Flags Card -->
+			<section class="card" id="flagsSection">
+				<div class="miniContainer">
+					<img
+						src="./icons8-flag-y.png"
+						alt="yellowFlag"
+						class="flagIcon"
+					/>
+					<span class="flagCount" id="yellowFlagCount">
+						Yellow Flag Count
+					</span>
+				</div>
+				<div class="miniContainer">
+					<img src="./icons8-flag-r.png" alt="redFlag" />
+					<span class="flagCount" id="redFlagCount">
+						Red Flag Count
+					</span>
+				</div>
+				<div class="requiredRating">...</div>
+			</section>
+			<!-- Ratings Card -->
+			<section class="card" id="ratingSection">
+				<div id="ratingAverage" class="miniContainer2">
+					<span class="ratingIcon">
+						<span class="outer2">
+							<span class="inner2">
+								<span id="avgRate" class="ratingValue">%</span>
+							</span>
+						</span>
+						<!-- SVG for loadign graphic -->
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							version="1.1"
+							width="75px"
+							height="75px"
+							id="avgSVG"
+						>
+							<defs>
+								<linearGradient id="GradientColor2">
+									<stop offset="0%" stop-color="#00a2ff" />
+									<stop offset="100%" stop-color="#00629b" />
+								</linearGradient>
+							</defs>
+							<circle
+								id="averageRating"
+								class="ratingCirlce"
+								cx="38"
+								cy="37"
+								r="32"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</span>
+					<span class="ratingTXT">Average Rating</span>
+				</div>
+				<div id="ratingMonth" class="miniContainer2">
+					<span class="ratingIcon">
+						<span class="outer2">
+							<span class="inner2">
+								<span id="latestRate" class="ratingValue">
+									%
+								</span>
+							</span>
+						</span>
+						<!-- SVG for loadign graphic -->
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							version="1.1"
+							width="75px"
+							height="75px"
+							id="avgSVG"
+						>
+							<defs>
+								<linearGradient id="GradientColor2">
+									<stop offset="0%" stop-color="#00a2ff" />
+									<stop offset="100%" stop-color="#00629b" />
+								</linearGradient>
+							</defs>
+							<circle
+								id="latestRating"
+								class="ratingCirlce"
+								cx="38"
+								cy="37"
+								r="32"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</span>
+					<span class="ratingTXT"> Latest Rating </span>
+				</div>
+				<div id="moreDetails">See More Details</div>
+			</section>
+		</main>
+	</body>
+	<script type="text/javascript" src="./app.js"></script>
+</html>
