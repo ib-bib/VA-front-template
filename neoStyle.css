@@ -16,6 +16,10 @@ header {
 	justify-content: space-between;
 	gap: 60vw;
 	align-items: center;
+	top: 0;
+	left: 0;
+	position: sticky;
+	z-index: 999;
 }
 
 .branchLogo {
@@ -54,7 +58,7 @@ header {
 
 .container {
 	margin-top: 50px;
-	height: 650px;
+	min-height: 650px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -63,6 +67,7 @@ header {
 .card {
 	background-color: rgb(240, 240, 240);
 	height: 450px;
+	min-height: 450px;
 	width: 350px;
 	border-radius: 10px;
 	transition: all 100ms ease-in-out;
@@ -243,4 +248,165 @@ svg {
 
 #moreDetails:active {
 	color: #00a2ff;
+}
+
+#accountMenu {
+	background-color: #abe0ff;
+	width: 300px;
+	height: 300px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px 1px #00629b;
+	position: fixed;
+	top: 100px;
+	right: -350px;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: all 700ms ease-in-out;
+}
+
+#accountMenu.visible {
+	transform: translateX(-350px);
+}
+
+.btn-account-menu {
+	width: 80%;
+	height: 50px;
+	border-radius: 15px;
+	box-shadow: 0 0 10px 1px black;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.btn-account-menu:hover {
+	box-shadow: 0 0 10px 1px darkblue;
+}
+
+.btn-account-menu:active {
+	transform: scale(0.98);
+	box-shadow: 0 0 10px 1px #b7e5ff;
+}
+
+.btn-account-menu img {
+	height: 40px;
+	width: 40px;
+}
+
+#logOut h4 {
+	width: 100px;
+	margin-right: 60px;
+	margin-left: 10px;
+	text-align: center;
+}
+
+#changePassword {
+	background-color: #00e88d;
+}
+
+#changePassword:hover {
+	background-color: #00ff99;
+}
+
+#changePassword:active {
+	background-color: #00b16a;
+}
+
+#logOut {
+	background-color: #00629b;
+	color: white;
+}
+
+#logOut:hover {
+	background-color: #00a2ff;
+}
+
+#logOut:active {
+	background-color: #004e7a;
+}
+
+/* Mobile-friendly stuff */
+
+.icon-1,
+.icon-2,
+.icon-3 {
+	width: 32px;
+	height: 3px;
+	background-color: white;
+	transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
+}
+
+.icon-1 {
+	transform: translateY(-10px);
+	animation-delay: 100ms;
+}
+
+.icon-3 {
+	transform: translateY(10px);
+	animation-delay: 250ms;
+}
+
+.hamburger-icon {
+	display: none;
+	height: 20px;
+	width: 60px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.hamburger-icon:hover,
+.hamburger-icon:focus {
+	filter: drop-shadow(0 0 10px rgb(45, 45, 45));
+}
+
+.hamburger-icon:active,
+.hamburger-icon:focus,
+.hamburger-icon div:active {
+	filter: drop-shadow(0 0 10px #00a2ff);
+}
+
+.icon-1.a {
+	transform: rotate(45deg);
+	transform-origin: 10px;
+}
+.icon-3.b {
+	transform: rotate(-45deg);
+	transform-origin: 15px;
+}
+.icon-2.c {
+	opacity: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+@media screen and (max-width: 1076px) {
+	.container {
+		flex-direction: column;
+		margin-bottom: 20px;
+		height: auto;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+
+	.card:hover {
+		transform: none;
+	}
+
+	.card:active {
+		transform: scale(0.95);
+	}
+
+	.hamburger-icon {
+		display: block;
+	}
+
+	.accountBtn {
+		display: none;
+	}
 }

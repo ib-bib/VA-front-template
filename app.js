@@ -143,3 +143,14 @@ const assignValues = () => {
 	getLastMonthRating();
 	getRequiredRating();
 };
+
+const displayAccountMenu = () => {
+	document.getElementById("accountMenu").classList.toggle("visible");
+};
+
+const hamburgerButton = () => {
+	document.getElementById("a").classList.toggle("a");
+	document.getElementById("b").classList.toggle("c");
+	document.getElementById("c").classList.toggle("b");
+	displayAccountMenu();
+};

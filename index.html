@@ -17,12 +17,18 @@
 			<a href="https://github.com/IEEE-SUSTech" class="branchLogo">
 				<img src="./IEEE-Branch-logo.svg" height="80" />
 			</a>
-			<button class="accountBtn">
+			<button class="accountBtn" onclick="displayAccountMenu()">
 				<img
 					src="./account-customize-man-svgrepo-com.svg"
 					height="50"
 				/>
 			</button>
+			<div class="hamburger-icon" id="icon" onclick="hamburgerButton()">
+				<div class="icon-1" id="a"></div>
+				<div class="icon-2" id="b"></div>
+				<div class="icon-3" id="c"></div>
+				<div class="clear"></div>
+			</div>
 		</header>
 		<main class="container">
 			<!-- Criteria Card -->
@@ -159,6 +165,20 @@
 				<div id="moreDetails">See More Details</div>
 			</section>
 		</main>
+		<!-- Modal for account menu -->
+		<div id="accountMenu">
+			<h3>FirstName LastName</h3>
+			<div id="changePassword" class="btn-account-menu">
+				<img
+					src="./password-account-security-reset-safety-svgrepo-com.svg"
+				/>
+				<h4>Change Password</h4>
+			</div>
+			<div id="logOut" class="btn-account-menu">
+				<img src="./log-out-02-svgrepo-com.svg" />
+				<h4>Log out</h4>
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript" src="./app.js"></script>
 </html>
