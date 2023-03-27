@@ -1,5 +1,5 @@
-const userName = "real";
-const password = "person";
+const userName = "ibrahim";
+const password = "adil";
 let userDetails = {};
 
 const modals = document.getElementsByClassName("modalContainer");
