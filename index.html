@@ -93,7 +93,11 @@
 				<div class="requiredRating">...</div>
 			</section>
 			<!-- Ratings Card -->
-			<section class="card" id="ratingSection">
+			<section
+				class="card"
+				id="ratingSection"
+				onclick="displayModal('ratingModal')"
+			>
 				<div id="ratingAverage" class="miniContainer2">
 					<span class="ratingIcon">
 						<span class="outer2">
@@ -167,7 +171,8 @@
 		</main>
 		<!-- Modal for account menu -->
 		<div id="accountMenu">
-			<h3>FirstName LastName</h3>
+			<h3 id="volName">FirstName LastName</h3>
+			<h4 id="volTeam">Team Name</h4>
 			<div id="changePassword" class="btn-account-menu">
 				<img
 					src="./password-account-security-reset-safety-svgrepo-com.svg"
@@ -179,6 +184,46 @@
 				<h4>Log out</h4>
 			</div>
 		</div>
+		<!-- Modal for rating -->
+		<div class="modalContainer" id="ratingModal">
+			<div class="modalCard">
+				<div class="ratingIcon2">
+					<div class="outer">
+						<div class="inner">
+							<div id="ratingModalValue">%</div>
+						</div>
+					</div>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						version="1.1"
+						width="160px"
+						height="160px"
+						id="ratingModalSVG"
+					>
+						<defs>
+							<linearGradient id="GradientColor3">
+								<stop offset="0%" stop-color="#00a2ff" />
+								<stop offset="100%" stop-color="#00629b" />
+							</linearGradient>
+						</defs>
+						<circle
+							id="ratingModalCircle"
+							cx="80"
+							cy="80"
+							r="70"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</div>
+				<ul id="ratingModalDetails">
+					<li>You achieved a rating of X on Task A</li>
+					<li>You achieved a rating of Y on Task B</li>
+					<li>You achieved a rating of Z on Task C</li>
+				</ul>
+				<h1 id="ratingModalMSG"></h1>
+			</div>
+		</div>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 	<script type="text/javascript" src="./app.js"></script>
 </html>

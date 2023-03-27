@@ -2,6 +2,8 @@ const userName = "real";
 const password = "person";
 let userDetails = {};
 
+const modals = document.getElementsByClassName("modalContainer");
+
 const retreiveDatum = async () => {
 	const response = await fetch(
 		`https://PreciousEducatedKeychanger.ibrahimadil1.repl.co/${userName}/${password}`
@@ -41,14 +43,6 @@ const computeCertificationCriteriaCompletion = () => {
 		percentage = tasks * 25 + (volunteeringMonths / 12) * 25;
 	}
 
-	let cirlcularProgressValue = 440 - (percentage / 100) * 440;
-	document.styleSheets.item(0).insertRule(`
-	@keyframes sd_ofst {
-		100% {
-			stroke-dashoffset: ${cirlcularProgressValue};
-		}
-	}`);
-
 	let counter = 0;
 	setInterval(() => {
 		if (counter == percentage) {
@@ -60,6 +54,14 @@ const computeCertificationCriteriaCompletion = () => {
 			).innerHTML = `${counter}%`;
 		}
 	}, 20);
+
+	let cirlcularProgressValue = 440 - (percentage / 100) * 440;
+	document.styleSheets.item(0).insertRule(`
+	@keyframes sd_ofst {
+		100% {
+			stroke-dashoffset: ${cirlcularProgressValue};
+		}
+	}`);
 };
 
 const getYellowFlags = () => {
@@ -77,10 +79,10 @@ const getRequiredRating = () => {
 	let flag = "";
 	if (userDetails.red_flags > 0) {
 		flag = "red";
-		rating = 80;
+		rating = 75;
 	} else if (userDetails.yellow_flags > 0) {
 		flag = "yellow";
-		rating = 75;
+		rating = 70;
 	} else if (userDetails.yellow_flags == 0 && userDetails.red_flags == 0) {
 		document.getElementsByClassName("requiredRating").item(0).innerHTML =
 			"You have no flags! Nicely done! Keep up the good work &#128516";
@@ -89,8 +91,8 @@ const getRequiredRating = () => {
 	}
 	document.getElementsByClassName("requiredRating").item(0).innerHTML =
 		`Next month aim for a rating of ${rating}%` +
-		` or higher <br />to remove a ${flag} flag.` +
-		`<br />We believe in you! You can do it!`;
+		` or higher to remove a ${flag} flag.` +
+		`<br />We believe in you! You can do it! &#128170`;
 };
 
 const getAverageRating = () => {
@@ -135,6 +137,13 @@ const getLastMonthRating = () => {
 	}, 20);
 };
 
+const getNameANDTeam = () => {
+	document.querySelector(
+		"#volName"
+	).innerHTML = `${userDetails.name} ${userDetails.password}`;
+	document.querySelector("#volTeam").innerHTML = `${userDetails.team}`;
+};
+
 const assignValues = () => {
 	computeCertificationCriteriaCompletion();
 	getYellowFlags();
@@ -142,6 +151,7 @@ const assignValues = () => {
 	getAverageRating();
 	getLastMonthRating();
 	getRequiredRating();
+	getNameANDTeam();
 };
 
 const displayAccountMenu = () => {
@@ -153,4 +163,63 @@ const hamburgerButton = () => {
 	document.getElementById("b").classList.toggle("c");
 	document.getElementById("c").classList.toggle("b");
 	displayAccountMenu();
+};
+
+const displayModal = modalID => {
+	document.getElementById(modalID).classList.add("visible");
+	if (modalID == "ratingModal") {
+		ratingModal();
+	}
+};
+
+const ratingModal = () => {
+	const lmr = (userDetails.rating - 0.05) * 100;
+	const cirlcularProgressValue = 440 - (lmr / 100) * 440;
+	document.styleSheets.item(0).insertRule(`
+			@keyframes sd_ofst4 {
+				100% {
+					stroke-dashoffset: ${cirlcularProgressValue};
+				}
+		}`);
+	let counter = 0;
+	setInterval(() => {
+		if (counter == lmr) {
+			clearInterval();
+		} else {
+			counter += 1;
+			document.querySelector(
+				"#ratingModalValue"
+			).innerHTML = `${counter}%`;
+		}
+	}, 20);
+	if (userDetails.rating >= 0.8) {
+		document.querySelector(
+			"#ratingModalMSG"
+		).innerHTML = `Well Done! &#128515`;
+		const jsCnft = new JSConfetti();
+		jsCnft.addConfetti().then(() => {
+			document.querySelector("#ratingModalDetails").style.display =
+				"block";
+		});
+	} else {
+		document.querySelector(
+			"#ratingModalMSG"
+		).innerHTML = `You can do better! &#128170`;
+		setTimeout(() => {
+			document.querySelector("#ratingModalDetails").style.display =
+				"block";
+		}, 2200);
+	}
+};
+
+window.onclick = e => {
+	if (e.target == modals[0]) {
+		modals[0].classList.remove("visible");
+	}
+	if (e.target == modals[1]) {
+		modals[1].classList.remove("visible");
+	}
+	if (e.target == modals[2]) {
+		modals[2].classList.remove("visible");
+	}
 };
