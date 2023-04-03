@@ -445,6 +445,30 @@ svg {
 	display: none;
 }
 
+#prevRatings {
+	color: #00629b;
+	font-weight: 600;
+	font-size: large;
+	width: 100%;
+	height: 32px;
+}
+
+.arrowHoverAnim {
+	animation: slideLeftAndReturn 300ms ease-in-out 2;
+}
+
+@keyframes slideLeftAndReturn {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-3px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
 @media screen and (max-width: 1076px) {
 	.branchLogo,
 	.accountBtn,

@@ -221,9 +221,29 @@
 					<li>You achieved a rating of Z on Task C</li>
 				</ul>
 				<h1 id="ratingModalMSG"></h1>
+				<div id="prevRatings">
+					<i
+						id="arrowLeft"
+						class="fa-solid fa-arrow-left"
+						style="cursor: pointer; margin-left: 20px"
+						onclick="displayModal('lineGraphModal')"
+					></i>
+					<span
+						style="margin-left: 5px; cursor: pointer"
+						onclick="displayModal('lineGraphModal')"
+						onmouseenter="triggerArrowAnimation()"
+						onmouseleave="triggerArrowAnimation()"
+					>
+						Previous Ratings
+					</span>
+				</div>
 			</div>
 		</div>
 	</body>
 	<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+	<script
+		src="https://kit.fontawesome.com/585f009cde.js"
+		crossorigin="anonymous"
+	></script>
 	<script type="text/javascript" src="./app.js"></script>
 </html>

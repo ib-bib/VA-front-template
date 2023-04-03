@@ -1,5 +1,5 @@
-const userName = "ibrahim";
-const password = "adil";
+const userName = "real";
+const password = "person";
 let userDetails = {};
 
 const modals = document.getElementsByClassName("modalContainer");
@@ -210,6 +210,10 @@ const ratingModal = () => {
 				"block";
 		}, 2200);
 	}
+};
+
+const triggerArrowAnimation = () => {
+	document.getElementById("arrowLeft").classList.toggle("arrowHoverAnim");
 };
 
 window.onclick = e => {
