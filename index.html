@@ -166,7 +166,6 @@
 					</span>
 					<span class="ratingTXT"> Latest Rating </span>
 				</div>
-				<div id="moreDetails">See More Details</div>
 			</section>
 		</main>
 		<!-- Modal for account menu -->
@@ -223,14 +222,13 @@
 				<h1 id="ratingModalMSG"></h1>
 				<div id="prevRatings">
 					<i
-						id="arrowLeft"
+						id="prevRatingsIcon"
 						class="fa-solid fa-arrow-left"
-						style="cursor: pointer; margin-left: 20px"
-						onclick="displayModal('lineGraphModal')"
+						onclick="displayModal('prevRatingsModal');loadDataset();"
 					></i>
 					<span
-						style="margin-left: 5px; cursor: pointer"
-						onclick="displayModal('lineGraphModal')"
+						id="prevRatingsBtn"
+						onclick="displayModal('prevRatingsModal');loadDataset();"
 						onmouseenter="triggerArrowAnimation()"
 						onmouseleave="triggerArrowAnimation()"
 					>
@@ -239,7 +237,41 @@
 				</div>
 			</div>
 		</div>
+
+		<!------------------------chart modal-->>
+		<div id="prevRatingsModal" class="modalContainer">
+			<div class="modalCard">
+				<div class="selectBox">
+					<select
+						name="yearSelect"
+						id="year"
+						onchange="loadDataset()"
+					>
+						<option
+							value="70, 80, 65, 90, 65, 67, 64, 91, 78, 85, 83, 81"
+						>
+							2020
+						</option>
+						<option
+							value="90, 70, 75, 80, 75, 87, 74, 81, 88, 95, 93, 91"
+						>
+							2021
+						</option>
+						<option
+							value="80, 60, 85, 90, 95, 77, 84, 71, 98, 75, 73, 71"
+						>
+							2022
+						</option>
+					</select>
+				</div>
+				<div class="chartBox">
+					Previous Ratings
+					<canvas id="myChart"></canvas>
+				</div>
+			</div>
+		</div>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 	<script
 		src="https://kit.fontawesome.com/585f009cde.js"

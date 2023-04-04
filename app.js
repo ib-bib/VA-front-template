@@ -1,8 +1,12 @@
 const userName = "real";
 const password = "person";
 let userDetails = {};
+let prevRatingsLineChart;
 
 const modals = document.getElementsByClassName("modalContainer");
+const accountModal = document.getElementById("accountMenu");
+const accountBtn = document.getElementById("accountBtn");
+const hamburgerButtonIcon = document.getElementById("icon");
 
 const retreiveDatum = async () => {
 	const response = await fetch(
@@ -155,7 +159,7 @@ const assignValues = () => {
 };
 
 const displayAccountMenu = () => {
-	document.getElementById("accountMenu").classList.toggle("visible");
+	accountModal.classList.toggle("visible");
 };
 
 const hamburgerButton = () => {
@@ -163,15 +167,6 @@ const hamburgerButton = () => {
 	document.getElementById("b").classList.toggle("c");
 	document.getElementById("c").classList.toggle("b");
 	displayAccountMenu();
-};
-
-const displayModal = modalID => {
-	document.getElementById(modalID).classList.add("visible");
-	if (modalID == "ratingModal") {
-		ratingModal();
-	} else if (modalID == "lineGraphModal") {
-		// Function here
-	}
 };
 
 const ratingModal = () => {
@@ -214,8 +209,62 @@ const ratingModal = () => {
 	}
 };
 
+const displayModal = modalID => {
+	if (modalID == "prevRatingsModal") {
+		document.getElementById("ratingModal").classList.remove("visible");
+	}
+	document.getElementById(modalID).classList.add("visible");
+	if (modalID == "ratingModal") {
+		ratingModal();
+	}
+};
+
 const triggerArrowAnimation = () => {
-	document.getElementById("arrowLeft").classList.toggle("arrowHoverAnim");
+	document
+		.getElementById("prevRatingsIcon")
+		.classList.toggle("arrowHoverAnim");
+};
+
+const loadDataset = () => {
+	const ctx = document.getElementById("myChart");
+	const year = document.getElementById("year");
+	const monthsData = year.value.split(",");
+	const yearLabel = year.options[year.selectedIndex].innerHTML;
+	const data = {
+		labels: [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December",
+		],
+		datasets: [
+			{
+				label: yearLabel,
+				data: monthsData,
+				fill: false,
+				borderColor: "#00629b",
+			},
+		],
+	};
+	const options = {
+		scale: {
+			// min: 0,
+			max: 100,
+		},
+	};
+	const config = { type: "line", data: data, options };
+	if (prevRatingsLineChart) {
+		prevRatingsLineChart.destroy();
+	}
+	prevRatingsLineChart = new Chart(ctx, config);
 };
 
 window.onclick = e => {
@@ -227,5 +276,8 @@ window.onclick = e => {
 	}
 	if (e.target == modals[2]) {
 		modals[2].classList.remove("visible");
+	}
+	if (e.target == modals[3]) {
+		modals[3].classList.remove("visible");
 	}
 };
