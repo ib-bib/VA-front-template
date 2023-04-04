@@ -25,6 +25,35 @@ header {
 	z-index: 999;
 }
 
+#headerBtnGroup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	color: white;
+}
+
+#notificationDot {
+	background-color: hsl(22, 100%, 50%);
+	width: 14px;
+	height: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: White;
+	font-weight: 600;
+	border-radius: 50%;
+	font-size: 12px;
+	margin-left: -0.5rem;
+	margin-top: -1px;
+}
+
+#notifBell {
+	width: 30px;
+	display: flex;
+	cursor: pointer;
+}
+
 .branchLogo {
 	text-decoration: none;
 	transition: all 75ms ease-in-out;
@@ -58,6 +87,60 @@ header {
 
 .accountBtn img:active {
 	filter: drop-shadow(0 0 10px #00a2ff);
+}
+
+#notificationPanel {
+	width: 450px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #abe0ff;
+	box-shadow: 0 0 10px 1px #00629b;
+	height: auto;
+	position: fixed;
+	top: 100px;
+	right: -470px;
+	z-index: 1;
+	transition: all 475ms ease-in-out;
+}
+
+#notificationPanel.visible {
+	transform: translateX(-470px);
+}
+
+#notificationPanel hr {
+	width: 90%;
+	border-color: #004e7a;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.notif_card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	border-radius: 10px;
+	border: thin solid black;
+	background-color: rgb(240, 240, 240);
+	width: 90%;
+	margin-bottom: 8px;
+}
+
+strong {
+	cursor: pointer;
+}
+
+strong:hover {
+	color: Blue;
+}
+
+.unread h5:first-of-type::after {
+	content: " ";
+	background-color: hsl(22, 100%, 50%);
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border-radius: 50%;
 }
 
 .container {
@@ -638,5 +721,9 @@ p {
 
 	#ratingModalMSG {
 		font-size: 26px;
+	}
+
+	.notif_card {
+		width: 320px;
 	}
 }

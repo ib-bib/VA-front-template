@@ -12,22 +12,34 @@
 		/>
 		<title>IEEE Volunteer App</title>
 	</head>
-	<body onload="retreiveDatum()">
+	<body onload="retreiveDatum();loadNotifs();">
 		<header>
 			<a href="https://github.com/IEEE-SUSTech" class="branchLogo">
 				<img src="./IEEE-Branch-logo.svg" height="80" />
 			</a>
-			<button class="accountBtn" onclick="displayAccountMenu()">
-				<img
-					src="./account-customize-man-svgrepo-com.svg"
-					height="50"
-				/>
-			</button>
-			<div class="hamburger-icon" id="icon" onclick="hamburgerButton()">
-				<div class="icon-1" id="a"></div>
-				<div class="icon-2" id="b"></div>
-				<div class="icon-3" id="c"></div>
-				<div class="clear"></div>
+			<div id="headerBtnGroup">
+				<div id="notifBell" onclick="displayNotifs()">
+					<h2 class="title">
+						<i style="font-size: 24px" class="fa">&#xf0a2;</i>
+					</h2>
+					<h5 id="notificationDot"></h5>
+				</div>
+				<button class="accountBtn" onclick="displayAccountMenu()">
+					<img
+						src="./account-customize-man-svgrepo-com.svg"
+						height="50"
+					/>
+				</button>
+				<div
+					class="hamburger-icon"
+					id="icon"
+					onclick="hamburgerButton()"
+				>
+					<div class="icon-1" id="a"></div>
+					<div class="icon-2" id="b"></div>
+					<div class="icon-3" id="c"></div>
+					<div class="clear"></div>
+				</div>
 			</div>
 		</header>
 		<main class="container">
@@ -183,6 +195,8 @@
 				<h4>Log out</h4>
 			</div>
 		</div>
+		<!-- Notification panel -->
+		<div id="notificationPanel" class=""></div>
 		<!-- Modal for rating -->
 		<div class="modalContainer" id="ratingModal">
 			<div class="modalCard">

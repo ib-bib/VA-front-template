@@ -2,11 +2,100 @@ const userName = "real";
 const password = "person";
 let userDetails = {};
 let prevRatingsLineChart;
+const notifs = {
+	total: 5,
+	unread: 4,
+};
+
+const randomize = arr => {
+	let index = Math.floor(Math.random() * arr.length);
+	return arr[index];
+};
+
+const notificationTemplates = [
+	`<div class="notif_card">
+        <h5 class="user_activity">
+            Event on <strong>DD/MM/YYYY</strong> -
+            <strong> Location X </strong>
+        </h5>
+    </div>`,
+	`<div class="notif_card">
+        <h5 class="user_activity">
+            Meeting today at <strong>X time</strong> - Online
+        </h5>
+    </div>`,
+	`<div class="notif_card">
+        <h5 class="user_activity">
+            Meeting today at <strong>X time</strong> - <strong>Location Y</strong>
+        </h5>
+    </div>`,
+	`<div class="notif_card">
+        <h5 class="user_activity">
+            Meeting on <strong>DD/MM/YYYY</strong> at <strong>X time</strong> - <strong>Location Y</strong>
+        </h5>
+    </div>`,
+	`<div class="notif_card">
+        <h5 class="user_activity">
+            Meeting on <strong>DD/MM/YYYY</strong> at <strong>X time</strong> - Online
+        </h5>
+    </div>`,
+];
 
 const modals = document.getElementsByClassName("modalContainer");
 const accountModal = document.getElementById("accountMenu");
 const accountBtn = document.getElementById("accountBtn");
 const hamburgerButtonIcon = document.getElementById("icon");
+const unread = document.getElementById("notificationDot");
+const notifPanel = document.getElementById("notificationPanel");
+const spearator = document.createElement("hr");
+let readMessages, unreadMessages;
+
+const arrangeNotifs = msgID => {
+	if (notifs.unread == 0) {
+		return;
+	}
+	const message = document.getElementById(msgID);
+	notifPanel.insertBefore(message, readMessages[0]);
+	message.classList.remove("unread");
+	message.classList.add("read");
+	notifs.unread--;
+	unread.innerText = notifs.unread;
+	readMessages = document.querySelectorAll(".read");
+	if (notifs.unread > 0) {
+		notifPanel.insertBefore(spearator, readMessages[0]);
+	} else {
+		unread.style.display = "none";
+		spearator.style.display = "none";
+	}
+};
+
+const loadNotifs = () => {
+	for (let i = 0; i < notifs.unread; i++) {
+		notifPanel.innerHTML += randomize(notificationTemplates);
+		document
+			.getElementsByClassName("notif_card")
+			[i].classList.add("unread");
+		document
+			.getElementsByClassName("notif_card")
+			[i].setAttribute("id", `msg-${i}`);
+	}
+
+	for (let i = notifs.unread; i < notifs.total; i++) {
+		notifPanel.innerHTML += randomize(notificationTemplates);
+		document.getElementsByClassName("notif_card")[i].classList.add("read");
+	}
+
+	unreadMessages = document.querySelectorAll(".unread");
+	readMessages = document.querySelectorAll(".read");
+	unread.innerText = unreadMessages.length;
+	notifPanel.insertBefore(spearator, readMessages[0]);
+
+	unreadMessages.forEach(message => {
+		message.addEventListener("click", () => {
+			arrangeNotifs(message.getAttribute("id"));
+		});
+	});
+};
 
 const retreiveDatum = async () => {
 	const response = await fetch(
@@ -160,6 +249,10 @@ const assignValues = () => {
 
 const displayAccountMenu = () => {
 	accountModal.classList.toggle("visible");
+};
+
+const displayNotifs = () => {
+	document.getElementById("notificationPanel").classList.toggle("visible");
 };
 
 const hamburgerButton = () => {
