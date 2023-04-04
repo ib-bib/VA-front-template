@@ -169,6 +169,8 @@ const displayModal = modalID => {
 	document.getElementById(modalID).classList.add("visible");
 	if (modalID == "ratingModal") {
 		ratingModal();
+	} else if (modalID == "lineGraphModal") {
+		// Function here
 	}
 };
 
